@@ -88,5 +88,13 @@ describe('Simple Storage Contract', () => {
         'value set must be able to get'
       );
     });
+    it('should change number value', async()=>{
+        const numberStored = await simpleStorageInstance.functions.number();
+        console.log(numberStored);
+        await simpleStorageInstance.functions.setNumber(7);
+        const numberStored2 = await simpleStorageInstance.functions.number();
+        console.log(numberStored2);
+        assert.ok(numberStored2.eq(7), 'sorted number should match with that set');
+          });
   });
 });
